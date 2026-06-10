@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TON618 Capital — Daily Monitor · 09 June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>/* ============================================================
+   TON618 Capital — house stylesheet (gold on black)
+   Drop into any HTML deliverable. Self-contained, no build step.
+   Loads webfonts from Google Fonts; degrades to Georgia/Arial.
+   ============================================================ */
+
+/*FONTS-IN-LINK*/ @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Grounds */
+  --t618-obsidian: #0B0B0C;
+  --t618-onyx:     #16161A;
+  --t618-graphite: #26262B;
+  --t618-ash:      #3A3A40;   /* faint dividers on dark */
+
+  /* Gold */
+  --t618-gold:      #C9A24B;
+  --t618-champagne: #E6D2A2;
+  --t618-antique:   #8A6D2B;
+
+  /* Light / ink */
+  --t618-ivory:     #F6F3EC;
+  --t618-ink:       #111113;
+  --t618-warmgray:  #9A958A;
+
+  /* Semantic */
+  --t618-jade:    #3F8F6B;
+  --t618-oxblood: #B0413E;
+
+  /* Type */
+  --t618-serif: "EB Garamond", Georgia, "Times New Roman", serif;
+  --t618-sans:  "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* Spacing rhythm */
+  --t618-gutter: 48px;
+  --t618-hairline: 1px;
+}
+
+/* ---------- Base: dark surface ---------- */
+.t618 {
+  background: var(--t618-obsidian);
+  color: var(--t618-ivory);
+  font-family: var(--t618-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "tnum" 1, "lnum" 1; /* tabular lining figures */
+  margin: 0;
+  padding: var(--t618-gutter);
+}
+
+/* Light/print variant: add class="t618 t618--paper" */
+.t618--paper {
+  background: var(--t618-ivory);
+  color: var(--t618-ink);
+}
+.t618--paper .t618-eyebrow,
+.t618--paper .t618-caption,
+.t618--paper .t618-disclosure { color: var(--t618-warmgray); }
+.t618--paper .t618-rule { background: var(--t618-antique); }
+.t618--paper table.t618-table thead th {
+  background: var(--t618-ink); color: var(--t618-champagne);
+}
+.t618--paper table.t618-table tbody tr:nth-child(even) { background: #ECE7DA; }
+
+/* ---------- Headlines ---------- */
+.t618 h1, .t618 h2, .t618 h3, .t618 .t618-display {
+  font-family: var(--t618-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin: 0 0 0.4em;
+}
+.t618 .t618-display { font-size: 3rem; }
+.t618 h1 { font-size: 2rem; }
+.t618 h2 { font-size: 1.5rem; }
+.t618 h3 { font-size: 1.2rem; }
+
+/* Eyebrow label above titles — sell-side research feel */
+.t618-eyebrow {
+  font-family: var(--t618-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--t618-gold);
+  margin: 0 0 0.5em;
+  display: block;
+}
+
+/* ---------- Hairline rules ---------- */
+.t618-rule {
+  border: 0;
+  height: var(--t618-hairline);
+  background: var(--t618-gold);
+  margin: 1.5rem 0;
+  opacity: 0.9;
+}
+.t618-rule--faint { background: var(--t618-ash); }
+/* "quasar" rule: hairline with a gold dot at the left end */
+.t618-rule--quasar { position: relative; background: var(--t618-ash); }
+.t618-rule--quasar::before {
+  content: ""; position: absolute; left: 0; top: 50%;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--t618-gold); transform: translateY(-50%);
+  box-shadow: 0 0 8px 1px rgba(201,162,75,0.6);
+}
+
+/* ---------- Document title / masthead: icon + "TON618 Capital" on one line ---------- */
+.t618-title { display: inline-flex; align-items: center; gap: 0.55em; font-family: var(--t618-serif); }
+.t618-title .icon { height: 1.7em; width: auto; flex: none; }
+.t618-title .name { font-size: 1.9rem; font-weight: 600; letter-spacing: -0.01em; color: var(--t618-ivory); white-space: nowrap; }
+.t618-title .name .six18 { color: var(--t618-gold); }      /* "618" always gold */
+.t618-title .name .cap { font-weight: 400; }               /* "Capital" set lighter */
+.t618--paper .t618-title .name { color: var(--t618-ink); } /* ink text on light surfaces */
+
+/* ---------- Wordmark (stacked) ---------- */
+.t618-wordmark { font-family: var(--t618-serif); line-height: 1; }
+.t618-wordmark .mark { font-size: 2.4rem; font-weight: 600; color: var(--t618-ivory); }
+.t618-wordmark .mark .six18 { color: var(--t618-gold); }
+.t618-wordmark .sub {
+  display: block; font-family: var(--t618-sans); font-size: 0.7rem;
+  text-transform: uppercase; letter-spacing: 0.3em; color: var(--t618-warmgray);
+  margin-top: 0.3em;
+}
+
+/* ---------- Hero figure ---------- */
+.t618-figure {
+  font-family: var(--t618-serif);
+  font-size: 3.2rem;
+  color: var(--t618-gold);
+  line-height: 1;
+}
+.t618-figure .label {
+  display: block; font-family: var(--t618-sans); font-size: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--t618-warmgray);
+  margin-top: 0.4em;
+}
+
+/* ---------- Cards / panels (flat, no shadow) ---------- */
+.t618-panel {
+  background: var(--t618-onyx);
+  border: var(--t618-hairline) solid var(--t618-ash);
+  padding: 1.25rem 1.5rem;
+}
+.t618-panel--accent { border-top: 2px solid var(--t618-gold); }
+
+/* ---------- Tables ---------- */
+table.t618-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+table.t618-table thead th {
+  background: var(--t618-onyx);
+  color: var(--t618-champagne);
+  font-family: var(--t618-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--t618-gold);
+}
+table.t618-table tbody td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--t618-ash);
+}
+table.t618-table td.num, table.t618-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.t618-table tbody tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+.t618 .pos { color: var(--t618-jade); }
+.t618 .neg { color: var(--t618-oxblood); }
+
+/* ---------- Captions / disclosure ---------- */
+.t618-caption { font-size: 0.8125rem; color: var(--t618-warmgray); }
+.t618-disclosure {
+  font-size: 0.72rem; color: var(--t618-warmgray); line-height: 1.5;
+  border-top: 1px solid var(--t618-ash); padding-top: 0.75rem; margin-top: 2rem;
+}
+
+/* ---------- Links / buttons ---------- */
+.t618 a { color: var(--t618-champagne); text-decoration: none; border-bottom: 1px solid var(--t618-antique); }
+.t618 a:hover { color: var(--t618-gold); }
+.t618-btn {
+  display: inline-block; font-family: var(--t618-sans); font-weight: 600;
+  font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--t618-obsidian); background: var(--t618-gold);
+  padding: 0.6rem 1.1rem; border: 0; cursor: pointer;
+}
+.t618-btn--ghost { background: transparent; color: var(--t618-gold); border: 1px solid var(--t618-gold); }
+
+.dm-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin:2rem 0; }
+.dm-2col { display:grid; grid-template-columns:1.1fr 0.9fr; gap:2.5rem; align-items:start; }
+@media (max-width: 860px){ .dm-grid{grid-template-columns:repeat(2,1fr);} .dm-2col{grid-template-columns:1fr;} }
+.dm-section { margin: 2.2rem 0; }
+.dm-chartbox { background: var(--t618-onyx); border:1px solid var(--t618-ash); padding:1rem; }
+.t618-figure { font-size: 2.6rem; }
+.dm-act { color: var(--t618-champagne); font-size:0.9rem; margin-top:0.6rem; }
+.dm-act strong { color: var(--t618-gold); font-weight:600; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="t618">
+
+<header style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem">
+  <span class="t618-title">
+    <span class="icon" style="display:inline-flex;height:1.7em;width:1.7em"><svg width="280" height="280" viewBox="116 116 280 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TON618 Capital icon">
+  <defs>
+    <!-- Accretion disk / ring: bright gold core fading to antique at the wings -->
+    <linearGradient id="disk" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#8A6D2B" stop-opacity="0"/>
+      <stop offset="12%" stop-color="#8A6D2B"/>
+      <stop offset="36%" stop-color="#C9A24B"/>
+      <stop offset="50%" stop-color="#F2E2B0"/>
+      <stop offset="64%" stop-color="#C9A24B"/>
+      <stop offset="88%" stop-color="#8A6D2B"/>
+      <stop offset="100%" stop-color="#8A6D2B" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ringg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#F2E2B0"/>
+      <stop offset="45%" stop-color="#C9A24B"/>
+      <stop offset="100%" stop-color="#8A6D2B"/>
+    </linearGradient>
+    <radialGradient id="coin" cx="42%" cy="36%" r="72%">
+      <stop offset="0%"  stop-color="#F4E6B8"/>
+      <stop offset="42%" stop-color="#D8B25C"/>
+      <stop offset="80%" stop-color="#C9A24B"/>
+      <stop offset="100%" stop-color="#9A7B30"/>
+    </radialGradient>
+    <radialGradient id="diskHaze" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C9A24B" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#C9A24B" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <!-- keeps only the front (lower) half of the ring -->
+    <clipPath id="frontHalf"><rect x="-160" y="256" width="832" height="300"/></clipPath>
+    <!-- window: interior of the gold box, just larger than the sphere; clips the
+         disk so its tips are cut off at the frame -->
+    <clipPath id="boxWin"><rect x="121" y="121" width="270" height="270"/></clipPath>
+  </defs>
+
+  <!-- opaque obsidian window fill: makes the mark self-contained so a single
+       version reads on any background (light or dark) -->
+  <rect x="120" y="120" width="272" height="272" fill="#0B0B0C"/>
+
+  <!-- BACK of the ring: full disk behind the core, tilted 22deg about the sphere
+       center, clipped to the window so its tips are cut at the frame.
+       A thin champagne rim gives the disk a luminous halo edge. -->
+  <g clip-path="url(#boxWin)">
+    <ellipse cx="256" cy="256" rx="307" ry="34" fill="url(#disk)" opacity="0.77" filter="url(#glow)"
+             transform="rotate(-22 256 256)"/>
+    <ellipse cx="256" cy="256" rx="307" ry="34" fill="none" stroke="#F2E2B0" stroke-width="1.5"
+             opacity="0.5" transform="rotate(-22 256 256)"/>
+    <ellipse cx="256" cy="256" rx="316" ry="42" fill="none" stroke="#F2E2B0" stroke-width="1"
+             opacity="0.3" transform="rotate(-22 256 256)"/>
+  </g>
+
+  <!-- compact event-horizon sphere (smaller relative to the window) -->
+  <circle cx="256" cy="256" r="100" fill="#0B0B0C"/>
+
+  <!-- bright sphere outline (photon ring) — thicker, grown inward so the outer
+       diameter is unchanged (outer edge stays at r103) -->
+  <circle cx="256" cy="256" r="91.56" fill="none" stroke="url(#ringg)" stroke-width="22.87" filter="url(#glow)"/>
+
+  <!-- lensed halo arcing over the top of the sphere (clipped to the window) -->
+  <g clip-path="url(#boxWin)">
+    <path d="M 156 314 A 116 116 0 1 1 356 314" fill="none" stroke="url(#ringg)"
+          stroke-width="6" stroke-linecap="round" opacity="0.85" filter="url(#glow)"/>
+  </g>
+
+  <!-- central Bitcoin coin (smaller relative to the sphere) -->
+  <circle cx="256" cy="256" r="56" fill="#0B0B0C"/>
+  <circle cx="256" cy="256" r="52" fill="url(#coin)"/>
+  <circle cx="256" cy="256" r="52" fill="none" stroke="#7A5F22" stroke-width="2.5"/>
+  <circle cx="256" cy="256" r="45" fill="none" stroke="#F4E6B8" stroke-width="1.6" opacity="0.45"/>
+
+  <!-- Bitcoin "B" symbol, scaled to the smaller coin -->
+  <g transform="translate(256 256) scale(0.55) translate(-256 -256)">
+    <g fill="#141417">
+      <rect x="240" y="190" width="11" height="20" rx="3"/>
+      <rect x="261" y="190" width="11" height="20" rx="3"/>
+      <rect x="240" y="302" width="11" height="20" rx="3"/>
+      <rect x="261" y="302" width="11" height="20" rx="3"/>
+      <rect x="226" y="206" width="17" height="100" rx="3"/>
+    </g>
+    <g fill="none" stroke="#141417" stroke-width="16" stroke-linecap="butt">
+      <path d="M 243 214 H 276 A 21 21 0 0 1 276 256 H 243"/>
+      <path d="M 243 256 H 282 A 23 23 0 0 1 282 300 H 243"/>
+    </g>
+  </g>
+
+  <!-- FOREGROUND: only the front (lower) half of the ring, slightly transparent,
+       so the near side orbits in front of the dense core; also clipped to the window -->
+  <g clip-path="url(#boxWin)">
+    <g transform="rotate(-22 256 256)">
+      <g clip-path="url(#frontHalf)">
+        <ellipse cx="256" cy="256" rx="307" ry="34" fill="url(#disk)" opacity="0.51" filter="url(#glow)"/>
+        <ellipse cx="256" cy="256" rx="307" ry="34" fill="none" stroke="#F2E2B0" stroke-width="1.5" opacity="0.5"/>
+        <ellipse cx="256" cy="256" rx="316" ry="42" fill="none" stroke="#F2E2B0" stroke-width="1" opacity="0.3"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- gold window box: contains the sphere, just slightly larger; frames the view -->
+  <rect x="120" y="120" width="272" height="272" fill="none" stroke="url(#ringg)" stroke-width="6"/>
+</svg>
+</span>
+    <span class="name">TON<span class="six18">618</span> <span class="cap">Capital</span></span>
+  </span>
+  <span class="t618-caption">Daily Monitor · 09 June 2026 · 05:00 ET</span>
+</header>
+<hr class="t618-rule">
+
+<span class="t618-eyebrow">Geopolitics · Rates · Bitcoin</span>
+<h1>U.S. strikes on Iran put $87 oil into tomorrow's CPI. The week now runs through the front end.</h1>
+
+<section class="dm-grid">
+  <div class="t618-figure">$62.6K<span class="label">BTC · −22% over 30D</span></div>
+  <div class="t618-figure">$87.50<span class="label">WTI crude</span></div>
+  <div class="t618-figure">4.15%<span class="label">2Y UST · +23bp 30D</span></div>
+  <div class="t618-figure">72%<span class="label">Odds of ≥1 hike in 2026</span></div>
+</section>
+<hr class="t618-rule--quasar">
+
+<section class="dm-section">
+  <span class="t618-eyebrow">Geopolitics · Energy · Defense</span>
+  <h2>Defense bid is immediate; the inflation passthrough is the trade.</h2>
+  <div class="dm-2col">
+    <div>
+      <p>The U.S. struck Iranian targets overnight after a session whipsawed by escalation headlines. Crude holds $87.50 on supply-disruption risk and the dollar pushed toward 100 on haven demand. The defense complex repriced before the open.</p>
+      <p>The derivative read: energy is now the swing variable inside the May CPI print released tomorrow — the same print that decides whether 72% hike odds harden. A geopolitical premium in crude converts directly into policy risk.</p>
+      <p class="dm-act"><strong>Actionable:</strong> Oil through $90 on Hormuz escalation is a second-round CPI shock. Defense (ITA complex) is the cleanest expression of sustained tension; fade only on a verified de-escalation headline.</p>
+    </div>
+    <table class="t618-table">
+      <thead><tr><th>Name</th><th class="num">Pre-mkt</th><th class="num">vs prior close</th></tr></thead>
+      <tbody>
+        <tr><td>Lockheed Martin (LMT)</td><td class="num">531.0</td><td class="num pos">+2.1%</td></tr>
+        <tr><td>RTX</td><td class="num">182.3</td><td class="num pos">+2.0%</td></tr>
+        <tr><td>Northrop (NOC)</td><td class="num">549.3</td><td class="num pos">+1.6%</td></tr>
+        <tr><td>iShares Defense (ITA)</td><td class="num">232.0</td><td class="num pos">+2.1%</td></tr>
+        <tr><td>WTI crude</td><td class="num">87.50</td><td class="num">holding highs</td></tr>
+        <tr><td>VIX (prior close)</td><td class="num">19.9</td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<hr class="t618-rule--faint">
+
+<section class="dm-section">
+  <span class="t618-eyebrow">Rates · Macro · FOMC Jun 17</span>
+  <h2>The front end is repricing the Fed, not inflation: 2Y +23bp in 30 days while 5y5y forwards fell 6bp.</h2>
+  <div class="dm-2col">
+    <div>
+      <p>May payrolls printed 172K — roughly double consensus — and ended the S&amp;P 500's nine-week win streak with a 2.6% Friday drop. Futures now price a 72% chance of at least one 2026 hike. The 2Y sits at 4.15% (+23bp over 30 days), the 10Y at 4.56% (+15bp); 2s10s flattened from 49bp to 41bp.</p>
+      <p>The tell mainstream coverage skips: the 5y5y forward inflation expectation FELL to 2.22% (−6bp) over the same window. The market is pricing a Fed that acts — not inflation that unanchors. This is a bear-flattener, not a 2022 rerun, and it caps how far the long end should sell off.</p>
+      <p class="dm-act"><strong>Actionable:</strong> CPI Wednesday 8:30 ET is binary. Core ≥0.4% m/m puts the 2Y through 4.25% and pressures every duration asset, BTC included. Core ≤0.2% unwinds the hike bid within the session.</p>
+    </div>
+    <div class="dm-chartbox">
+      <canvas id="ratesChart" height="240"></canvas>
+      <p class="t618-caption" style="margin:0.6rem 0 0">UST 2Y vs 10Y, 90 days. Source: FRED (DGS2, DGS10).</p>
+    </div>
+  </div>
+</section>
+<hr class="t618-rule--faint">
+
+<section class="dm-section">
+  <span class="t618-eyebrow">Bitcoin · Market Structure</span>
+  <h2>The sellers are ETFs and liquidated longs. The buyers are treasuries and the 200-week mean. That resolves near $61,400.</h2>
+  <div class="dm-2col">
+    <div>
+      <p>BTC trades $62.6K after the June 5–6 flush to $60.2K held. The pressure is identifiable and finite: a spot-ETF outflow streak near $2.97B, $426M in futures liquidations (longs took the majority), and sentiment at extreme fear. Against that, Strategy net-added 1,550 BTC (~$101M) after a ~$2.5M trim sparked a false "Saylor selling" narrative, and Strive added 32 BTC.</p>
+      <p>On-chain says capitulation, not distribution: SOPR 0.82 (coins moving at a loss), MVRV-Z 1.18 (fair value), Puell 0.75 (no miner stress), weekly RSI 31. Price sits at 1.02x the 200-week MA — the long-term mean, ~$61.4K. MSTR fell 8.4% pre-market against BTC's −1.3%: the leveraged-treasury premium is compressing even as the underlying stabilizes. The Fund's composite drawdown-risk score: 30.8 — LOW.</p>
+      <p class="dm-act"><strong>Actionable:</strong> The 200WMA (~$61.4K) is the line. Staged adds above $60K on stabilization; invalidation on a weekly close below the 200WMA. Forced selling into structural support with leverage already cleared is how down-cycle lows form.</p>
+    </div>
+    <table class="t618-table">
+      <thead><tr><th>Metric</th><th class="num">Value</th><th>Read</th></tr></thead>
+      <tbody>
+        <tr><td>SOPR</td><td class="num">0.82</td><td>Loss realization — capitulation</td></tr>
+        <tr><td>MVRV-Z</td><td class="num">1.18</td><td>Fair value band</td></tr>
+        <tr><td>Puell Multiple</td><td class="num">0.75</td><td>No miner stress</td></tr>
+        <tr><td>Weekly RSI</td><td class="num">31</td><td>Oversold</td></tr>
+        <tr><td>200W-MA deviation</td><td class="num">1.02x</td><td>At the long-term mean</td></tr>
+        <tr><td>Funding / OI</td><td class="num">flat / washed</td><td>Leverage cleared</td></tr>
+        <tr><td>ETF outflow streak</td><td class="num neg">$2.97B</td><td>The identifiable seller</td></tr>
+        <tr><td>Composite risk score</td><td class="num">30.8</td><td>LOW</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<hr class="t618-rule--faint">
+
+<section class="dm-section">
+  <span class="t618-eyebrow">AI · Tech · ADBE Jun 11</span>
+  <h2>AI capex accelerates into a tape that has stopped paying for it.</h2>
+  <p>OpenAI is moving on a 10-GW Ohio data-center campus backed by Nvidia — the largest single AI infrastructure commitment on record — while NVDA slipped 1.1% pre-market and SMCI fell 10% Monday. Adobe (−2.8% pre-market) reports Thursday: street at EPS 5.83 on $6.45B revenue, the week's first read on software AI monetization.</p>
+  <p class="dm-act"><strong>Actionable:</strong> Capex headlines no longer rally the complex — the marginal dollar is going to power and land. Watch whether ADBE guidance can flip software sentiment; power infrastructure remains the quiet AI winner.</p>
+</section>
+<hr class="t618-rule--faint">
+
+<section class="dm-section">
+  <span class="t618-eyebrow">Catalyst Watch</span>
+  <h2>Seven days that price the rest of the quarter.</h2>
+  <table class="t618-table">
+    <thead><tr><th>Date</th><th>Event</th><th>Why it matters</th></tr></thead>
+    <tbody>
+      <tr><td>Wed Jun 10, 8:30 ET</td><td>US CPI (May)</td><td>Decides the 72% hike pricing; binary for duration and BTC</td></tr>
+      <tr><td>Thu Jun 11, AMC</td><td>Adobe FQ2 earnings</td><td>First software-AI monetization read; est. EPS 5.83 / $6.45B</td></tr>
+      <tr><td>Tue–Wed Jun 16–17</td><td>FOMC + Powell presser</td><td>First meeting of the cycle with live hike risk</td></tr>
+      <tr><td>Rolling</td><td>Iran / Hormuz escalation</td><td>Oil &gt;$90 is a second-round CPI shock; defense bid extends</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<p class="t618-disclosure">TON618 Capital. For information purposes only. Not an offer to sell or a solicitation to buy any security or interest. Past performance is not indicative of future results. Digital assets are volatile and may result in total loss of capital.<br>
+Generated 09 June 2026 · <a href="https://github.com/Keythb/ton618-daily-monitor/tree/main/archive">Archive</a></p>
+
+<script>
+const GOLD='#C9A24B', GRAY='#9A958A', ASH='#3A3A40', IVORY='#F6F3EC';
+Chart.defaults.color = GRAY;
+Chart.defaults.font.family = "Inter, Helvetica Neue, Arial, sans-serif";
+new Chart(document.getElementById('ratesChart'), {
+  type: 'line',
+  data: {
+    labels: ["2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-04", "2026-05-05", "2026-05-06", "2026-05-07", "2026-05-08", "2026-05-11", "2026-05-12", "2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-06-01", "2026-06-02", "2026-06-03", "2026-06-04", "2026-06-05", "2026-06-08"],
+    datasets: [
+      { label: '2Y', data: [3.56, 3.57, 3.64, 3.76, 3.73, 3.68, 3.68, 3.76, 3.79, 3.88, 3.83, 3.9, 3.84, 3.96, 3.88, 3.82, 3.79, 3.81, 3.79, 3.84, 3.84, 3.81, 3.79, 3.78, 3.81, 3.78, 3.76, 3.76, 3.78, 3.71, 3.72, 3.78, 3.79, 3.83, 3.78, 3.78, 3.84, 3.92, 3.88, 3.88, 3.95, 3.93, 3.87, 3.92, 3.9, 3.95, 4.0, 3.98, 4.0, 4.09, 4.07, 4.13, 4.04, 4.08, 4.13, 4.01, 4.0, 3.99, 3.98, 4.05, 4.05, 4.08, 4.05, 4.17, 4.15], borderColor: GOLD, backgroundColor: 'rgba(201,162,75,0.10)', borderWidth: 1.6, pointRadius: 0, tension: 0.2 },
+      { label: '10Y', data: [4.12, 4.15, 4.21, 4.27, 4.28, 4.23, 4.2, 4.26, 4.25, 4.39, 4.34, 4.39, 4.33, 4.42, 4.44, 4.35, 4.3, 4.33, 4.31, 4.35, 4.34, 4.33, 4.29, 4.29, 4.31, 4.3, 4.26, 4.29, 4.32, 4.26, 4.26, 4.3, 4.3, 4.34, 4.31, 4.35, 4.36, 4.42, 4.4, 4.39, 4.45, 4.43, 4.36, 4.41, 4.38, 4.42, 4.46, 4.46, 4.47, 4.59, 4.61, 4.67, 4.57, 4.57, 4.56, 4.5, 4.48, 4.45, 4.45, 4.47, 4.46, 4.49, 4.47, 4.55, 4.56], borderColor: GRAY, borderWidth: 1.2, pointRadius: 0, tension: 0.2 }
+    ]
+  },
+  options: {
+    plugins: { legend: { labels: { boxWidth: 14, boxHeight: 2 } } },
+    scales: {
+      x: { grid: { color: ASH }, ticks: { maxTicksLimit: 6 } },
+      y: { grid: { color: ASH }, ticks: { callback: v => v.toFixed(2) + '%' } }
+    },
+    interaction: { intersect: false, mode: 'index' }
+  }
+});
+</script>
+</body>
+</html>
